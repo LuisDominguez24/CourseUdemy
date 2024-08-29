@@ -1,0 +1,46 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Arts</h1>
+
+<div id="arts">
+  <% @arts.each do |art| %>
+    <%= render art %>
+    <p>
+      <%= link_to "Show this art", art %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New art", new_art_path %>
+
+<h1> Showing list Articles  </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Author</th>
+      <th>Date created</th>
+      <th>Date Updated</th>
+      <th colspan ="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @arts.each do |art| %>
+    <tr>
+      <td><%= art.title %></td>
+      <td><%= art.description %></td>
+      <td><%= art.user %></td>
+      <td><%= art.created_at %></td>
+      <td><%= art.updated_at %></td>
+      <td><%= link_to 'Show' , art_path(art.id) %> </td>
+      <td><%= link_to 'Edit' , edit_art_path(art.id) %> </td>
+      <td><%= link_to 'Delete', art_path(art), method: :delete %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>
+<%= link_to 'Create New Art' , new_art_path %> 
+</p>
